@@ -9,7 +9,7 @@ Template for making easy-to-work-with tempates
 
 1. [Copy this template](https://github.com/rhdeck/ts-template/)
 2. Clone to a local directory (eg `git clone https://github.com/me/my-repository/ && cd my-repository`)
-3. Run `./setup.js` to initialize the node package (Get rid of template strings - and this readme!)
+3. Run `yarn && yarn setup` to initialize the node package (Get rid of template strings - and this readme!)
 4. Happy Coding!
 
 ## Useful Scripts
@@ -17,6 +17,7 @@ Template for making easy-to-work-with tempates
 1. `yarn build` will build using typescript pre-configured to node-compatible defaults
 2. `yarn docs` will auto-generate a README.md that starts with TOP.md, then adds CLI documentation (via [commanderdoc](https://npmjs.com/package/commanderdoc)) for any tool you have set up, and then library documentation after that.
 3. `yarn test` is pre-configured to test for typescript errors
+4. `yarn watch` will watch the codebase for changes and rebuild (using [livelink](https://npmjs.com/package/@raydeck/livelink))
 
 ## Git code protections
 
@@ -37,13 +38,128 @@ PRs and feedback welcome via GitHub issues.
 
 # Usage
 ```bash
-npx template [options]
+npx react-amplify-auth-context [options]
 ```
 
 <a name="_librarymd"></a>
 
-[template - v1.0.2](#readmemd)
 
-# template - v1.0.2
+# react-amplify-auth-context - v1.0.0
 
+## Index
 
+### Variables
+
+* [Provider](#provider)
+* [context](#const-context)
+
+### Functions
+
+* [AuthProvider](#const-authprovider)
+* [updateState](#updatestate)
+* [useAuth](#const-useauth)
+* [useAuthContext](#const-useauthcontext)
+* [withAuthProvider](#withauthprovider)
+
+## Variables
+
+###  Provider
+
+• **Provider**: *[Provider](#provider)‹undefined | object›*
+
+Defined in index.tsx:22
+
+___
+
+### `Const` context
+
+• **context**: *Context‹undefined | object›* = createContext<
+  | {
+      Auth: typeof Auth;
+      authState: string;
+      authData: any;
+      updateState: typeof updateState;
+    }
+  | undefined
+>(undefined)
+
+Defined in index.tsx:13
+
+## Functions
+
+### `Const` AuthProvider
+
+▸ **AuthProvider**(`__namedParameters`: object): *Element‹›*
+
+Defined in index.tsx:26
+
+**Parameters:**
+
+▪ **__namedParameters**: *object*
+
+Name | Type |
+------ | ------ |
+`children` | ReactNode |
+
+**Returns:** *Element‹›*
+
+___
+
+###  updateState
+
+▸ **updateState**(`event`: string, `data?`: any): *void*
+
+Defined in index.tsx:23
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | string |
+`data?` | any |
+
+**Returns:** *void*
+
+___
+
+### `Const` useAuth
+
+▸ **useAuth**(): *AuthClass‹›*
+
+Defined in index.tsx:95
+
+**Returns:** *AuthClass‹›*
+
+___
+
+### `Const` useAuthContext
+
+▸ **useAuthContext**(): *object*
+
+Defined in index.tsx:90
+
+**Returns:** *object*
+
+* **Auth**: *typeof Auth*
+
+* **authData**: *any*
+
+* **authState**: *string*
+
+* **updateState**: *typeof updateState*
+
+___
+
+###  withAuthProvider
+
+▸ **withAuthProvider**(`C`: FC): *FC*
+
+Defined in index.tsx:101
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`C` | FC |
+
+**Returns:** *FC*
