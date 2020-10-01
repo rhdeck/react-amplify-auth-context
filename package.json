@@ -1,7 +1,7 @@
 {
   "name": "react-amplify-auth-context",
   "private": false,
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "",
   "main": "lib/index.js",
   "bin": "lib/bin.js",
