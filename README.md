@@ -16,7 +16,7 @@ npx react-amplify-auth-context [options]
 <a name="_librarymd"></a>
 
 
-# react-amplify-auth-context - v1.0.1
+# react-amplify-auth-context - v2.0.0
 
 ## Index
 
@@ -30,7 +30,6 @@ npx react-amplify-auth-context [options]
 * [AuthProvider](#const-authprovider)
 * [updateState](#updatestate)
 * [useAuth](#const-useauth)
-* [useAuthContext](#const-useauthcontext)
 * [withAuthProvider](#withauthprovider)
 
 ## Variables
@@ -39,7 +38,7 @@ npx react-amplify-auth-context [options]
 
 • **Provider**: *[Provider](#provider)‹undefined | object›*
 
-Defined in index.tsx:22
+*Defined in [index.tsx:23](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L23)*
 
 ___
 
@@ -51,11 +50,12 @@ ___
       authState: string;
       authData: any;
       updateState: typeof updateState;
+      checkAuthStatus: () => Promise<void>;
     }
   | undefined
 >(undefined)
 
-Defined in index.tsx:13
+*Defined in [index.tsx:13](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L13)*
 
 ## Functions
 
@@ -63,7 +63,7 @@ Defined in index.tsx:13
 
 ▸ **AuthProvider**(`__namedParameters`: object): *Element‹›*
 
-Defined in index.tsx:26
+*Defined in [index.tsx:27](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L27)*
 
 **Parameters:**
 
@@ -81,7 +81,7 @@ ___
 
 ▸ **updateState**(`event`: string, `data?`: any): *void*
 
-Defined in index.tsx:23
+*Defined in [index.tsx:24](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L24)*
 
 **Parameters:**
 
@@ -96,19 +96,9 @@ ___
 
 ### `Const` useAuth
 
-▸ **useAuth**(): *AuthClass‹›*
+▸ **useAuth**(): *object*
 
-Defined in index.tsx:95
-
-**Returns:** *AuthClass‹›*
-
-___
-
-### `Const` useAuthContext
-
-▸ **useAuthContext**(): *object*
-
-Defined in index.tsx:90
+*Defined in [index.tsx:92](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L92)*
 
 **Returns:** *object*
 
@@ -118,6 +108,10 @@ Defined in index.tsx:90
 
 * **authState**: *string*
 
+* **checkAuthStatus**(): *function*
+
+  * (): *Promise‹void›*
+
 * **updateState**: *typeof updateState*
 
 ___
@@ -126,7 +120,7 @@ ___
 
 ▸ **withAuthProvider**(`C`: FC): *FC*
 
-Defined in index.tsx:101
+*Defined in [index.tsx:97](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L97)*
 
 **Parameters:**
 
