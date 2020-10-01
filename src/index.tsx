@@ -16,6 +16,7 @@ const context = createContext<
       authState: string;
       authData: any;
       updateState: typeof updateState;
+      checkAuthStatus: () => Promise<void>;
     }
   | undefined
 >(undefined);
@@ -33,18 +34,19 @@ export const AuthProvider: FC = ({ children }) => {
     setAuthState(authState);
     setAuthData(authData);
   }, []);
+  const checkAuthStatus = useCallback(async () => {
+    try {
+      const creds = await Auth.currentAuthenticatedUser();
+      setAuthState("signedIn");
+      setAuthData(creds);
+    } catch (e) {
+      setAuthState((oldAuthState) =>
+        oldAuthState === "loading" ? "" : oldAuthState
+      );
+    }
+  }, []);
   useEffect(() => {
-    (async () => {
-      try {
-        const creds = await Auth.currentAuthenticatedUser();
-        setAuthState("signedIn");
-        setAuthData(creds);
-      } catch (e) {
-        setAuthState((oldAuthState) =>
-          oldAuthState === "loading" ? "" : oldAuthState
-        );
-      }
-    })();
+    checkAuthStatus();
   }, []);
   const handler = (capsule: HubCapsule): void => {
     console.log("got a handler fired in here", capsule);
@@ -80,23 +82,17 @@ export const AuthProvider: FC = ({ children }) => {
       Hub.remove("auth", handler);
     };
   }, []);
-  const value = useMemo(() => ({ updateState, Auth, authState, authData }), [
-    authState,
-    authData,
-  ]);
+  const value = useMemo(
+    () => ({ updateState, Auth, authState, authData, checkAuthStatus }),
+    [authState, authData, checkAuthStatus]
+  );
   return <Provider value={value}>{children}</Provider>;
 };
 export default AuthProvider;
-export const useAuthContext = () => {
-  const c = useContext(context);
-  if (!c) throw "Cannot use useAuth when not under the AuthProvider";
-  return c;
-};
 export const useAuth = () => {
   const c = useContext(context);
   if (!c) throw "Cannot use useAuth when not under the AuthProvider";
-  const { Auth } = c;
-  return Auth;
+  return c;
 };
 export function withAuthProvider(C: FC): FC {
   return (props) => {
