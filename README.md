@@ -16,7 +16,7 @@ npx react-amplify-auth-context [options]
 <a name="_librarymd"></a>
 
 
-# react-amplify-auth-context - v2.0.0
+# react-amplify-auth-context - v2.0.1
 
 ## Index
 
@@ -38,24 +38,24 @@ npx react-amplify-auth-context [options]
 
 • **Provider**: *[Provider](#provider)‹undefined | object›*
 
-*Defined in [index.tsx:23](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L23)*
+*Defined in [index.tsx:24](https://github.com/rhdeck/react-amplify-auth-context/blob/e5a3437/src/index.tsx#L24)*
 
 ___
 
 ### `Const` context
 
 • **context**: *Context‹undefined | object›* = createContext<
-  | {
-      Auth: typeof Auth;
-      authState: string;
-      authData: any;
-      updateState: typeof updateState;
-      checkAuthStatus: () => Promise<void>;
-    }
-  | undefined
->(undefined)
+    | {
+        Auth: typeof Auth;
+        authState: string;
+        authData: any;
+        updateState: typeof updateState;
+        checkAuthStatus: () => Promise<void>;
+      }
+    | undefined
+  >(undefined)
 
-*Defined in [index.tsx:13](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L13)*
+*Defined in [index.tsx:13](https://github.com/rhdeck/react-amplify-auth-context/blob/e5a3437/src/index.tsx#L13)*
 
 ## Functions
 
@@ -63,15 +63,16 @@ ___
 
 ▸ **AuthProvider**(`__namedParameters`: object): *Element‹›*
 
-*Defined in [index.tsx:27](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L27)*
+*Defined in [index.tsx:28](https://github.com/rhdeck/react-amplify-auth-context/blob/e5a3437/src/index.tsx#L28)*
 
 **Parameters:**
 
 ▪ **__namedParameters**: *object*
 
-Name | Type |
------- | ------ |
-`children` | ReactNode |
+Name | Type | Default |
+------ | ------ | ------ |
+`children` | ReactNode | - |
+`debug` | boolean | false |
 
 **Returns:** *Element‹›*
 
@@ -81,7 +82,7 @@ ___
 
 ▸ **updateState**(`event`: string, `data?`: any): *void*
 
-*Defined in [index.tsx:24](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L24)*
+*Defined in [index.tsx:25](https://github.com/rhdeck/react-amplify-auth-context/blob/e5a3437/src/index.tsx#L25)*
 
 **Parameters:**
 
@@ -98,7 +99,7 @@ ___
 
 ▸ **useAuth**(): *object*
 
-*Defined in [index.tsx:92](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L92)*
+*Defined in [index.tsx:96](https://github.com/rhdeck/react-amplify-auth-context/blob/e5a3437/src/index.tsx#L96)*
 
 **Returns:** *object*
 
@@ -120,7 +121,7 @@ ___
 
 ▸ **withAuthProvider**(`C`: FC): *FC*
 
-*Defined in [index.tsx:97](https://github.com/rhdeck/react-amplify-auth-context/blob/29ea6df/src/index.tsx#L97)*
+*Defined in [index.tsx:101](https://github.com/rhdeck/react-amplify-auth-context/blob/e5a3437/src/index.tsx#L101)*
 
 **Parameters:**
 
