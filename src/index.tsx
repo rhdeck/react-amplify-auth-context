@@ -10,21 +10,25 @@ import React, {
 import { Auth } from "@aws-amplify/auth";
 import { Hub } from "@aws-amplify/core";
 import type { HubCapsule } from "@aws-amplify/core/lib/Hub";
-const context = createContext<
-  | {
-      Auth: typeof Auth;
-      authState: string;
-      authData: any;
-      updateState: typeof updateState;
-      checkAuthStatus: () => Promise<void>;
-    }
-  | undefined
->(undefined);
+const context =
+  createContext<
+    | {
+        Auth: typeof Auth;
+        authState: string;
+        authData: any;
+        updateState: typeof updateState;
+        checkAuthStatus: () => Promise<void>;
+      }
+    | undefined
+  >(undefined);
 const { Provider } = context;
 function updateState(event: string, data?: any) {
   Hub.dispatch("auth", { event, data });
 }
-export const AuthProvider: FC = ({ children }) => {
+export const AuthProvider: FC<{ debug?: boolean }> = ({
+  children,
+  debug = false,
+}) => {
   const [authState, setAuthState] = useState<string>("loading");
   const [authData, setAuthData] = useState<any>();
   const handleStateChange = useCallback((authState: string, authData: any) => {
@@ -49,7 +53,7 @@ export const AuthProvider: FC = ({ children }) => {
     checkAuthStatus();
   }, []);
   const handler = (capsule: HubCapsule): void => {
-    console.log("got a handler fired in here", capsule);
+    if (debug) console.log("got a handler fired in here", capsule);
     const { payload } = capsule;
     switch (payload.event) {
       case "signIn":
